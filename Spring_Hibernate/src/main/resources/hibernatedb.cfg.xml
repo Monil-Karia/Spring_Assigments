@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Search in XML website -->
+<!-- dtd: Document Type Definition -->
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection properties -->
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@DESKTOP-0CBEKCK:1521:XE</property>
+        <property name="hibernate.connection.username">system</property>
+        <property name="hibernate.connection.password">root12345</property>
+
+        <!-- Dialect for Oracle -->
+        <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+
+        <!-- Auto commit settings -->
+        <property name="hibernate.connection.autocommit">true</property>
+
+        <!-- Schema generation strategy -->
+        <!-- Possible values for hbm2ddl.auto:
+             - create: Creates the schema, destroying previous data.
+             - validate: Validates the schema, making no changes.
+             - update: Updates the schema, creating tables/columns as needed.
+             - create-drop: Creates the schema and drops it when the session factory is closed. -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- SQL logging -->
+        <!-- true enables logging of all SQL statements to the console -->
+        <property name="hibernate.show_sql">true</property>
+        
+        <!-- component mapping -->
+		<mapping class="com.pojo_orm_classes.Cart_Pojo"/>
+
+        <!-- mapping the .hbm.xml files here(REPLACED BY ANNOTATIONS!) -->
+		<!-- mapping the POJO/ENTITY/BEAN class to the ORACLE TABLE -->
+		
+		<!-- Collection mapping annotation files -->
+		<mapping class="com.pojo_orm_classes.Post_Pojo"/>
+		<mapping class="com.pojo_orm_classes.Comment_Pojo"/>
+		
+		<!-- inheritance mapping(single table strategy) -->
+		<mapping class="com.pojo_orm_classes.FourWheeler_Pojo"/>
+		<mapping class="com.pojo_orm_classes.TwoWheeler_Pojo"/>
+    </session-factory>
+</hibernate-configuration>
